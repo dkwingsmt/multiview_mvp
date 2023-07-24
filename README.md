@@ -4,18 +4,33 @@ This repository contains samples to experiment with rendering into multiple view
 aspirational and may not actually work. Some samples may require a custom engine build to run. Some samples may be
 outdated and/or have other issues. DO NOT DEPEND ON ANYTHING IN THIS REPOSITORY.
 
+This playground does not demonstrate a windowing API and creating/managing windows from a Flutter app is not yet
+supported. However, the rendering APIs demonstrated in this playground will form the foundation for future multi-window
+support in Flutter. Nothing in this repository shall be seen as a definite or "official" decision on windowing APIs,
+though. This is just an exploratory playground.
+
+Please [report any bugs](https://github.com/flutter/flutter/issues/new?assignees=&labels=a%3A%20multi%20window,team-framework&projects=&template=2_bug.yml)
+you may encounter.
+
+## Supported platforms
+
+The demos in this repository run on the following platforms:
+
+| Platform | Support                                               |
+|----------|-------------------------------------------------------|
+| macOS    | ⚠️ with custom engine branch (see instructions below) |
+| Windows  | ❌                                                    |
+| Linux    | ❌                                                    |
+
 ## How to use?
 
-This sample is meant to be used with a custom (prototype) engine and framework.
-Currently, it only supports macOS.
+The samples are meant to be used with a custom (prototype) engine using the master branch of the framework.
 
 0. Set up the Framework development environment: See [the wiki page](https://github.com/flutter/flutter/wiki/Setting-up-the-Framework-development-environment).
 
-1. In **the framework repo**, add the prototype remote and switch to the prototype branch:
+1. In **the framework repo**, switch to the master branch:
 ```
-git remote add goderbauer https://github.com/goderbauer/flutter/
-git fetch goderbauer
-git checkout goderbauer/rawview
+git checkout master
 ```
 
 2. Set up the Engine development environment: See [the wiki page](https://github.com/flutter/flutter/wiki/Setting-up-the-Engine-development-environment).
@@ -24,7 +39,7 @@ git checkout goderbauer/rawview
 ```
 git remote add loic-sharma https://github.com/loic-sharma/flutter-engine/
 git fetch loic-sharma
-git checkout 1cb65e423c2e8804d2d1c91613271e64ed49b76c
+git checkout 27c47f6721e9fe910c7ef8efc7e92ba279402619
 ```
 
 4. In **this repo**, edit `pubspec.yaml`, and add the following dependency override to use the custom `dart:ui` library:
@@ -46,7 +61,7 @@ flutter pub get
 flutter run --local-engine=host_debug_unopt -d macos -t lib/raw_dynamic.dart
 ```
 
-8. If everything goes well, the app should start up with a window, then another window after 1 second.
+8. If everything goes well, the app should start up with a number of windows.
 
 ## Samples
 
